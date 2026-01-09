@@ -11,7 +11,7 @@
 #
 
 # Modify default IP
-sed -i 's/192.168.1.1/192.168.10.99/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.5.5/g' package/base-files/files/bin/config_generate
 
 # Modify default theme
 #sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
@@ -19,5 +19,11 @@ sed -i 's/192.168.1.1/192.168.10.99/g' package/base-files/files/bin/config_gener
 # Modify hostname
 sed -i 's/LEDE/OneCloud/g' package/base-files/files/bin/config_generate
 
+# 取消登陆密码
+sed -i 's/^\(.*99999\)/#&/' package/lean/default-settings/files/zzz-default-settings
+
 # 替换终端为bash
-sed -i 's/\/bin\/ash/\/bin\/bash/' package/base-files/files/etc/passwd
+#sed -i 's/\/bin\/ash/\/bin\/bash/' package/base-files/files/etc/passwd
+
+# 拉取 easytier、luci-app-easytier
+git clone https://github.com/EasyTier/luci-app-easytier.git package/easytier
